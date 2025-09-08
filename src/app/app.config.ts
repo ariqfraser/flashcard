@@ -7,6 +7,7 @@ import { provideRouter } from "@angular/router";
 
 import { routes } from "./app.routes";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { environment } from "../environments/environment";
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import {
     getAnalytics,
@@ -21,17 +22,7 @@ export const appConfig: ApplicationConfig = {
         provideBrowserGlobalErrorListeners(),
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
-        provideFirebaseApp(() =>
-            initializeApp({
-                projectId: "flashcard-c07be",
-                appId: "1:55575010683:web:a18648de155eb2ea9971de",
-                storageBucket: "flashcard-c07be.firebasestorage.app",
-                apiKey: "AIzaSyD9JeY2odIm7elt46fSKXZi2LeRDVITQ1I",
-                authDomain: "flashcard-c07be.firebaseapp.com",
-                messagingSenderId: "55575010683",
-                measurementId: "G-JC6V73K8MR",
-            }),
-        ),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideAnalytics(() => getAnalytics()),
         ScreenTrackingService,
