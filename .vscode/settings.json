@@ -1,3 +1,6 @@
 {
-    "github-actions.workflows.pinned.workflows": [".github/workflows/deploy-on-merge-to-main.yml"]
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/deploy-on-merge-to-main.yml",
+        ".github/workflows/node.js.yml"
+    ]
 }

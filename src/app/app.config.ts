@@ -22,14 +22,14 @@ import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angul
 const firebaseProviders: (Provider | EnvironmentProviders)[] = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
-        if (environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
+        if (!environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
         return getAuth();
     }),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     UserTrackingService,
     provideFirestore(() => {
-        if (environment.production) connectFirestoreEmulator(getFirestore(), "localhost", 8080);
+        if (!environment.production) connectFirestoreEmulator(getFirestore(), "localhost", 8080);
         return getFirestore();
     }),
 ];
