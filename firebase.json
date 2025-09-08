@@ -1,1 +1,7 @@
-{}
+{
+    "hosting": {
+        "public": "dist/flashcard/browser",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "site": "flashcard-c07be"
+    }
+}

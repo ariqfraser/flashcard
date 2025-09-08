@@ -10,7 +10,9 @@
         "prepare": "husky install",
         "format": "prettier --write .",
         "cspell": "cspell \"**/*\" --no-progress",
-        "lint-staged": "lint-staged"
+        "lint-staged": "lint-staged",
+        "pre-deploy": "ng build --configuration production",
+        "deploy": "npm run pre-deploy && firebase deploy --project flashcard-c07be --only hosting:flashcard-c07be"
     },
     "private": true,
     "dependencies": {
@@ -31,6 +33,8 @@
         "@angular/compiler-cli": "^20.2.0",
         "@types/jest": "^30.0.0",
         "cspell": "^9.2.1",
+        "firebase": "^11.10.0",
+        "firebase-tools": "^14.15.2",
         "husky": "^9.1.7",
         "jest": "^30.1.3",
         "jest-preset-angular": "^15.0.0",
