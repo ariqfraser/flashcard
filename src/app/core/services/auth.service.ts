@@ -11,6 +11,7 @@ export class AuthService {
 
     async signOut(): Promise<void> {
         await this.auth.signOut();
+        this.router.navigate(["/auth"]);
     }
 
     async signInWithGoogle(): Promise<void> {

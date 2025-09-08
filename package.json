@@ -9,7 +9,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "jest --coverage",
         "test:ci": "jest --ci --runInBand --coverage",
-        "prepare": "husky install",
+        "prepare": "husky",
         "format": "prettier --write .",
         "cspell": "cspell \"**/*\" --no-progress",
         "lint-staged": "lint-staged",

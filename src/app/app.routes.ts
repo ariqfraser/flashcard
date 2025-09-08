@@ -1,26 +1,55 @@
 import { AuthGuard } from "@angular/fire/auth-guard";
 import { Routes } from "@angular/router";
-import { DemoFeature } from "@features/demo-feature/demo-feature";
-import { LoginFeature } from "@features/login-feature/login-feature";
 
 export const routes: Routes = [
-    {
-        path: "",
-        pathMatch: "full",
-        redirectTo: "auth",
-    },
+    { path: "", pathMatch: "full", redirectTo: "app" },
+
+    // auth (lazy)
     {
         path: "auth",
-        component: LoginFeature,
+        loadComponent: () =>
+            import("./features/login-feature/login-feature").then((m) => m.LoginFeature),
     },
+
+    // protected app area — keep the guard on the parent so children are protected
     {
         path: "app",
         canActivate: [AuthGuard],
-        children: [{ path: "demo", component: DemoFeature }],
+        children: [
+            {
+                path: "",
+                pathMatch: "full",
+                loadComponent: () =>
+                    import("./features/dashboard-feature/dashboard-feature").then(
+                        (m) => m.DashboardFeature,
+                    ),
+            },
+            {
+                path: "decks",
+                children: [
+                    {
+                        path: "",
+                        loadComponent: () =>
+                            import("./features/decks-feature/decks-feature").then(
+                                (m) => m.DecksFeature,
+                            ),
+                    },
+                    {
+                        path: "new",
+                        loadComponent: () =>
+                            import("./features/deck-edit-feature/deck-edit-feature").then(
+                                (m) => m.DeckEditFeature,
+                            ),
+                    },
+                ],
+            },
+            {
+                path: "demo",
+                loadComponent: () =>
+                    import("./features/demo-feature/demo-feature").then((m) => m.DemoFeature),
+            },
+        ],
     },
-    {
-        path: "**",
-        pathMatch: "full",
-        redirectTo: "app/demo",
-    },
+
+    { path: "**", pathMatch: "full", redirectTo: "app" },
 ];

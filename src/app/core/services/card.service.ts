@@ -19,7 +19,7 @@ import {
     serverTimestamp,
 } from "firebase/firestore";
 
-import { CardDoc, DeckMember } from "@shared/types/card.types";
+import { CardDoc, DeckMember } from "@shared/types/flashcard.types";
 
 @Injectable({
     providedIn: "root",
