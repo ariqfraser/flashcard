@@ -1,0 +1,6 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": ["flashcard", "NgOptimizedImage", "hmr"],
+    "ignorePaths": ["node_modules/**", "dist/**", ".git/**"]
+}
