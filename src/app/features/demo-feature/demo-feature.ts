@@ -1,7 +1,7 @@
 import { AsyncPipe, JsonPipe } from "@angular/common";
 import { Component, computed, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { Auth, signInAnonymously, user } from "@angular/fire/auth";
+import { Auth, user } from "@angular/fire/auth";
 import {
     addDoc,
     collection,
@@ -10,6 +10,7 @@ import {
     getDocs,
     collectionData,
 } from "@angular/fire/firestore";
+import { AuthService } from "@core/services/auth.service";
 import { CardService } from "@core/services/card.service";
 
 @Component({
@@ -20,6 +21,7 @@ import { CardService } from "@core/services/card.service";
 })
 export class DemoFeature {
     private readonly auth = inject(Auth);
+    private readonly authService = inject(AuthService);
     private readonly firestore = inject(Firestore);
     private readonly cardService = inject(CardService);
     user = toSignal(user(this.auth));
@@ -32,11 +34,11 @@ export class DemoFeature {
     });
 
     async login() {
-        await signInAnonymously(this.auth);
+        await this.authService.signInWithGoogle();
     }
 
     async logout() {
-        await this.auth.signOut();
+        await this.authService.signOut();
     }
 
     async addCard(aSide: string, bSide: string) {
