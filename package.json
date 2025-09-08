@@ -14,7 +14,8 @@
         "cspell": "cspell \"**/*\" --no-progress",
         "lint-staged": "lint-staged",
         "pre-deploy": "ng build --configuration production",
-        "deploy": "npm run pre-deploy && firebase deploy --project flashcard-c07be --only hosting:flashcard-c07be"
+        "deploy": "npm run pre-deploy && firebase deploy --project flashcard-c07be --only hosting:flashcard-c07be",
+        "emulators": "firebase emulators:start --only firestore,auth,ui"
     },
     "private": true,
     "dependencies": {
