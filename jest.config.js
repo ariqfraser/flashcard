@@ -13,12 +13,13 @@ module.exports = {
         "^.+\\.(css|scss|sass|less)$": "identity-obj-proxy",
         "^.+\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js",
     },
-    coverageThreshold: {
-        global: {
-            branches: 10,
-            functions: 10,
-            lines: 10,
-            statements: 10,
-        },
-    },
+    // TODO: Enable on first release
+    // coverageThreshold: {
+    //     global: {
+    //         branches: 80,
+    //         functions: 80,
+    //         lines: 80,
+    //         statements: 80,
+    //     },
+    // },
 };
