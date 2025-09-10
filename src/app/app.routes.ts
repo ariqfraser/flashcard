@@ -39,6 +39,7 @@ export const routes: Routes = [
                     },
                     {
                         path: "new",
+                        data: { showNav: false },
                         loadComponent: () =>
                             import("./features/deck-edit-feature/deck-edit-feature").then(
                                 (m) => m.DeckEditFeature,
@@ -46,6 +47,7 @@ export const routes: Routes = [
                     },
                     {
                         path: "edit/:deckId",
+                        data: { showNav: false },
                         loadComponent: () =>
                             import("./features/deck-edit-feature/deck-edit-feature").then(
                                 (m) => m.DeckEditFeature,

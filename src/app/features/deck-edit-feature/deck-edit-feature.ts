@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { EditDeleteButton } from "./ui/edit-delete-button/edit-delete-button";
 
 @Component({
     selector: "app-deck-edit-feature",
-    imports: [FormsModule],
+    imports: [FormsModule, EditDeleteButton],
     templateUrl: "./deck-edit-feature.html",
     styleUrl: "./deck-edit-feature.scss",
 })
