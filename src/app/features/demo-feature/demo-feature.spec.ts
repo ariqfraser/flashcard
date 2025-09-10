@@ -11,7 +11,6 @@ import { DemoFeature } from "./demo-feature";
 import { Auth } from "@angular/fire/auth";
 import { Firestore } from "@angular/fire/firestore";
 import { AuthService } from "@core/services/auth.service";
-import { CardService } from "@core/services/card.service";
 
 describe("DemoFeature", () => {
     let component: DemoFeature;
@@ -27,7 +26,6 @@ describe("DemoFeature", () => {
                     provide: AuthService,
                     useValue: { signInWithGoogle: jest.fn(), signOut: jest.fn() },
                 },
-                { provide: CardService, useValue: { addCard: jest.fn() } },
             ],
         }).compileComponents();
 

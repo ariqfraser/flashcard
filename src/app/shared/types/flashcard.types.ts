@@ -6,11 +6,6 @@ export type FirestoreTimestamp =
     | { seconds: number; nanoseconds: number }
     | ReturnType<typeof serverTimestamp>;
 
-export const COLLECTIONS = {
-    DECKS: "decks",
-    CARDS: "cards",
-} as const;
-
 export interface DeckDoc {
     // required
     title: string;
@@ -51,27 +46,24 @@ export interface CardDoc {
     back: string;
 
     // optional
+    note?: string;
     media?: string[]; // urls to images/audio
     tags?: string[];
 
     // timestamps
     createdAt?: FirestoreTimestamp;
     updatedAt?: FirestoreTimestamp;
-    createdBy?: { uid: string; displayName?: string; photoURL?: string };
 
     // spaced-repetition metadata (optional)
     srs?: CardSRS;
 }
 
 /**
- * Membership (join) document for decks. Recommended pattern:
- * - decks/{deckId}/members/{memberId}
- * - or top-level collection: deck_members/{autoId} with { deckId, cardId }
+ * Membership (join) document for cards/decks relationship.
+ * - Location: `users/{userId}/cardMemberships/{membershipId}`}`
  */
-export interface DeckMember {
+export interface CardMembership {
     cardId: string;
-    order?: number; // per-deck ordering
     addedAt?: FirestoreTimestamp;
-    addedBy?: string; // uid who added the card to the deck
     perDeckSrs?: Partial<CardSRS>; // optional per-deck SRS overrides
 }

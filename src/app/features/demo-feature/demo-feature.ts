@@ -11,7 +11,6 @@ import {
     collectionData,
 } from "@angular/fire/firestore";
 import { AuthService } from "@core/services/auth.service";
-import { CardService } from "@core/services/card.service";
 
 @Component({
     selector: "app-demo-feature",
@@ -23,7 +22,6 @@ export class DemoFeature {
     private readonly auth = inject(Auth);
     private readonly authService = inject(AuthService);
     private readonly firestore = inject(Firestore);
-    private readonly cardService = inject(CardService);
     user = toSignal(user(this.auth));
 
     cards$ = computed(() => {
@@ -39,12 +37,6 @@ export class DemoFeature {
 
     async logout() {
         await this.authService.signOut();
-    }
-
-    async addCard(aSide: string, bSide: string) {
-        if (!this.auth.currentUser) return;
-        const id = await this.cardService.addCard({ front: aSide, back: bSide });
-        console.log("Added card with ID: ", id);
     }
 
     async listCards() {

@@ -1,5 +1,6 @@
 import { AuthGuard } from "@angular/fire/auth-guard";
 import { Routes } from "@angular/router";
+import { MobileNav } from "@core/ui/mobile-nav/mobile-nav";
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "auth" },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {
         path: "app",
         canActivate: [AuthGuard],
+        component: MobileNav,
         children: [
             {
                 path: "",
