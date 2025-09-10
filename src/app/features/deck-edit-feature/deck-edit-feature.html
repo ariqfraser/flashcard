@@ -1,20 +1,32 @@
-<h1>Edit deck</h1>
-<input type="text" value="Untitled deck" />
-<textarea rows="3" placeholder="Description (optional)"></textarea>
+<div class="page-actions">
+    <button class="cancel-btn" (click)="handleCancel()">cancel</button>
+    <button class="save-btn">save changes</button>
+</div>
 
-<div class="section">
+<h1 class="page-title">Editing "{{ title() }}"</h1>
+
+<div class="section deck-info-section">
+    <h2>Deck Information</h2>
+    <input type="text" [(ngModel)]="title" />
+    <textarea rows="3" placeholder="Description (optional)"></textarea>
+</div>
+
+<div class="section add-card-section">
+    <h2>Add a Card</h2>
+    <p class="description">Add a new card to the deck.</p>
+    <textarea id="front" rows="3" placeholder="FRONT"></textarea>
+    <textarea id="back" rows="3" placeholder="BACK"></textarea>
+    <button class="add-card-btn">
+        <span>Add card</span>
+    </button>
+</div>
+
+<div class="section cards-section">
     <h2>Cards</h2>
-    <p>Add, remove, and edit cards in this deck.</p>
+    <p class="description">Remove and edit cards in this deck.</p>
     <div class="card-actions">
         <button>flip</button>
     </div>
 
-    <div class="cards">
-        <button class="add-card-btn">
-            <span>+</span>
-            <span>Add card</span>
-        </button>
-    </div>
+    <div class="cards"></div>
 </div>
-
-<div class="footer"><button>cancel</button><button>save</button></div>

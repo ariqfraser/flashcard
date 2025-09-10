@@ -31,6 +31,7 @@ export const routes: Routes = [
                 children: [
                     {
                         path: "",
+                        pathMatch: "full",
                         loadComponent: () =>
                             import("./features/decks-feature/decks-feature").then(
                                 (m) => m.DecksFeature,
@@ -38,6 +39,13 @@ export const routes: Routes = [
                     },
                     {
                         path: "new",
+                        loadComponent: () =>
+                            import("./features/deck-edit-feature/deck-edit-feature").then(
+                                (m) => m.DeckEditFeature,
+                            ),
+                    },
+                    {
+                        path: "edit/:deckId",
                         loadComponent: () =>
                             import("./features/deck-edit-feature/deck-edit-feature").then(
                                 (m) => m.DeckEditFeature,
