@@ -10,9 +10,6 @@ export interface DeckDoc {
     // required
     title: string;
     ownerId: string; // uid of creator/owner
-    // prefer using a join collection for membership to avoid large deck documents
-    // e.g. /decks/{deckId}/members/{memberId} where each member doc references a cardId
-    cardsPreview?: string[]; // optional small list (1-3) of card IDs or preview tokens
 
     // optional metadata
     description?: string;
@@ -64,6 +61,7 @@ export interface CardDoc {
  */
 export interface CardMembership {
     cardId: string;
+    deckIds: string[]; // a card can belong to multiple decks
     addedAt?: FirestoreTimestamp;
     perDeckSrs?: Partial<CardSRS>; // optional per-deck SRS overrides
 }
