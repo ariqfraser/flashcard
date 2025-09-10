@@ -2,7 +2,7 @@ import { AuthGuard } from "@angular/fire/auth-guard";
 import { Routes } from "@angular/router";
 
 export const routes: Routes = [
-    { path: "", pathMatch: "full", redirectTo: "app" },
+    { path: "", pathMatch: "full", redirectTo: "auth" },
 
     // auth (lazy)
     {

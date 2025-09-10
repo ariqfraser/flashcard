@@ -19,7 +19,7 @@ export class AuthService {
         try {
             const credentials = await signInWithPopup(this.auth, provider);
             console.log("Signed in as:", credentials.user);
-            this.router.navigate(["/app/demo"]);
+            this.router.navigate(["/app/decks"]);
         } catch (error) {
             console.error("Error during sign-in:", error);
         }
