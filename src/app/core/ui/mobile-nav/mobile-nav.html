@@ -1,0 +1,16 @@
+<div class="screen">
+    <router-outlet></router-outlet>
+</div>
+@if (showNav$ | async) {
+    <nav class="mobile-nav">
+        <button routerLink="/app" routerLinkActive="active" class="nav-button">
+            <mat-icon fontSet="material-symbols-rounded">dashboard</mat-icon>
+        </button>
+        <button routerLink="/app/decks" routerLinkActive="active" class="nav-button decks">
+            <mat-icon fontSet="material-symbols-rounded">playing_cards</mat-icon>
+        </button>
+        <button routerLink="/settings" routerLinkActive="active" class="nav-button">
+            <mat-icon fontSet="material-symbols-rounded">person</mat-icon>
+        </button>
+    </nav>
+}

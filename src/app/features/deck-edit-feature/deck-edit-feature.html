@@ -1,0 +1,39 @@
+<div class="page-actions">
+    <button class="cancel-btn" (click)="handleCancel()">cancel</button>
+    <button class="save-btn" (click)="handleSave()">save changes</button>
+</div>
+
+<h1 class="page-title">Editing "{{ title() }}"</h1>
+
+<div class="section deck-info-section">
+    <h2>Deck Information</h2>
+    <input type="text" [(ngModel)]="title" />
+    <textarea rows="3" placeholder="Description (optional)"></textarea>
+</div>
+
+<div class="section add-card-section">
+    <h2>Add a Card</h2>
+    <p class="description">Add a new card to the deck.</p>
+    <textarea id="front" rows="3" placeholder="FRONT" [(ngModel)]="newCardFront"></textarea>
+    <textarea id="back" rows="3" placeholder="BACK" [(ngModel)]="newCardBack"></textarea>
+    <button class="add-card-btn" (click)="handleAddCard()">
+        <span>Add card</span>
+    </button>
+</div>
+
+<div class="section cards-section">
+    <h2>Cards</h2>
+    <p class="description">Remove and edit cards in this deck.</p>
+    <div class="card-actions">
+        <button>flip</button>
+    </div>
+
+    @for (card of cards(); track $index) {
+        <div class="card">
+            <app-edit-delete-button
+                ><span>{{ card.front }}</span
+                ><span>{{ card.back }}</span></app-edit-delete-button
+            >
+        </div>
+    }
+</div>

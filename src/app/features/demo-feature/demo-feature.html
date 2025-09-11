@@ -1,0 +1,18 @@
+<div class="header">
+    @if (user()) {
+        <span [title]="user | json">Welcome, {{ user()!.uid }}</span>
+        <button (click)="logout()">Logout</button>
+    } @else {
+        <button (click)="login()">Anon Login</button>
+    }
+</div>
+
+<div class="add-card">
+    <input type="text" placeholder="A Side" #ASide />
+    <input type="text" placeholder="B Side" #BSide />
+    <button (click)="(null)">Add Card</button>
+</div>
+
+<button (click)="listCards()">Get Cards</button>
+
+{{ cards$() | async | json }}

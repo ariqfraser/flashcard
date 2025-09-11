@@ -5,7 +5,7 @@ import {
     Provider,
     provideZoneChangeDetection,
 } from "@angular/core";
-import { provideRouter } from "@angular/router";
+import { provideRouter, withViewTransitions } from "@angular/router";
 
 import { routes } from "./app.routes";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
@@ -18,18 +18,19 @@ import {
     UserTrackingService,
 } from "@angular/fire/analytics";
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
+import { authInterceptorProvider } from "./core/interceptors/auth.interceptor";
 
 const firebaseProviders: (Provider | EnvironmentProviders)[] = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
-        if (environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
+        if (!environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
         return getAuth();
     }),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     UserTrackingService,
     provideFirestore(() => {
-        if (environment.production) connectFirestoreEmulator(getFirestore(), "localhost", 8080);
+        if (!environment.production) connectFirestoreEmulator(getFirestore(), "localhost", 8080);
         return getFirestore();
     }),
 ];
@@ -38,7 +39,8 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideBrowserGlobalErrorListeners(),
         provideZoneChangeDetection({ eventCoalescing: true }),
-        provideRouter(routes),
+        provideRouter(routes, withViewTransitions()),
         ...firebaseProviders,
+        authInterceptorProvider,
     ],
 };

@@ -1,0 +1,65 @@
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+input,
+textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.page-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-title {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.add-card-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 0.5rem;
+
+    h2,
+    p,
+    .add-card-btn {
+        grid-column: span 2;
+    }
+
+    .add-card-btn {
+        margin-top: 0.5rem;
+    }
+}
+
+.section {
+    margin: 1rem 0;
+
+    .description {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.deck-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
