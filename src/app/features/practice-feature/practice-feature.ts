@@ -22,7 +22,7 @@ export class PracticeFeature implements OnInit {
     ngOnInit(): void {
         const deck: Partial<DeckDoc> = this.route.snapshot.queryParams;
         // validate deck ensure it contains at least id and title
-        if (!deck.id || !deck.title) {
+        if (!deck?.id || !deck?.title) {
             console.error("Invalid deck data in query params", deck);
             this.router.navigate(["/decks"]);
             return;
