@@ -13,6 +13,14 @@ describe("Flashcard", () => {
 
         fixture = TestBed.createComponent(Flashcard);
         component = fixture.componentInstance;
+        // provide required inputs before initial change detection
+        // component expects callable inputs (signal-like): card() and flipped()
+        component.card = (() => ({ front: "Q", back: "A" })) as any;
+        component.flipped = (() => false) as any;
+        fixture.detectChanges();
+    });
+
+    beforeEach(() => {
         fixture.detectChanges();
     });
 

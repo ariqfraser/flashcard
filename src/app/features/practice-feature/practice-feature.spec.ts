@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PracticeFeature } from "./practice-feature";
 import { RouterModule, ActivatedRoute } from "@angular/router";
 import { Component } from "@angular/core";
+import { PracticeFeatureService } from "./practice-feature.service";
+import { of } from "rxjs";
 
 @Component({})
 class DummyComponent {}
@@ -12,6 +14,10 @@ describe("PracticeFeature", () => {
     let fixture: ComponentFixture<PracticeFeature>;
 
     beforeEach(async () => {
+        const mockService = {
+            getCards: (deckId: string) => of([{ front: "Q", back: "A" }]),
+        } as Partial<PracticeFeatureService>;
+
         await TestBed.configureTestingModule({
             imports: [
                 PracticeFeature,
@@ -24,6 +30,7 @@ describe("PracticeFeature", () => {
                         snapshot: { queryParams: { id: "deck-1", title: "Deck One" } },
                     },
                 },
+                { provide: PracticeFeatureService, useValue: mockService },
             ],
         }).compileComponents();
 
