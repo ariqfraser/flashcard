@@ -5,7 +5,8 @@
 
 <div class="decks">
     @for (deck of decks$ | async; track $index) {
-        <div class="deck">
+        {{ deck | json }}
+        <button class="deck" (click)="handlePractice(deck)">
             <span class="deck-title">{{ deck.title }}</span>
             @if (deck.description) {
                 <span class="deck-description">{{ deck.description }}</span>
@@ -18,6 +19,6 @@
                     <span>{{ deck.cardCount }}</span>
                 </div>
             </div>
-        </div>
+        </button>
     }
 </div>

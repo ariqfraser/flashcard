@@ -1,8 +1,9 @@
-import { Component, inject, model } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { DecksFeatureService } from "./decks-feature.service";
 import { AsyncPipe, JsonPipe } from "@angular/common";
 import { MatIcon } from "@angular/material/icon";
+import { DeckDoc } from "../../shared/types/firestore.types";
 
 @Component({
     selector: "app-decks-feature",
@@ -15,7 +16,15 @@ export class DecksFeature {
     private readonly decksFeatureService = inject(DecksFeatureService);
     decks$ = this.decksFeatureService.getDecks();
 
-    protected handleCreateNewDeck() {
+    public handleCreateNewDeck() {
         this.router.navigate(["app", "decks", "new"]);
+    }
+
+    public handlePractice(deck: DeckDoc) {
+        console.log("moving to deck", deck);
+
+        this.router.navigate(["app", "practice"], {
+            queryParams: { ...deck },
+        });
     }
 }

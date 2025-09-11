@@ -56,6 +56,14 @@ export const routes: Routes = [
                 ],
             },
             {
+                path: "practice",
+                data: { showNav: false },
+                loadComponent: () =>
+                    import("./features/practice-feature/practice-feature").then(
+                        (m) => m.PracticeFeature,
+                    ),
+            },
+            {
                 path: "demo",
                 loadComponent: () =>
                     import("./features/demo-feature/demo-feature").then((m) => m.DemoFeature),

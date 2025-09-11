@@ -4,6 +4,7 @@ import {
     collection,
     collectionData,
     CollectionReference,
+    docData,
     DocumentData,
     documentId,
     Firestore,
@@ -12,7 +13,8 @@ import {
     where,
 } from "@angular/fire/firestore";
 import { DeckDoc } from "@shared/types/firestore.types";
-import { Observable, switchMap } from "rxjs";
+import { doc } from "firebase/firestore";
+import { map, Observable, switchMap, take, tap } from "rxjs";
 
 export const getUserDecksCollection = (userId: string, firestore: Firestore) => {
     return collection(firestore, `/users/${userId}/decks`) as CollectionReference<DeckDoc>;
@@ -49,5 +51,16 @@ export const getCardsInDeck$ = (
             );
             return collectionData(cardsQuery, { idField: "id" });
         }),
+    );
+};
+
+export const getDeck = (
+    firestore: Firestore,
+    userId: string,
+    deckId: string,
+): Observable<DeckDoc | null> => {
+    return docData(doc(firestore, `/users/${userId}/decks/${deckId}`)).pipe(
+        map((value) => (value ? (value as DeckDoc) : null)),
+        take(1),
     );
 };

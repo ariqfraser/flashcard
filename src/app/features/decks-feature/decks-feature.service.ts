@@ -14,6 +14,6 @@ export class DecksFeatureService {
 
     getDecks() {
         const decks = getUserDecksCollection(this.auth.currentUser?.uid!, this.firestore);
-        return collectionData(decks) as Observable<DeckDoc[]>;
+        return collectionData(decks, { idField: "id" }) as Observable<DeckDoc[]>;
     }
 }

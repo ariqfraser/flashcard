@@ -10,6 +10,7 @@ export interface DeckDoc {
     // required
     title: string;
     ownerId: string; // uid of creator/owner
+    id: string; // Firestore document ID (populate with collectionData/docData)
 
     // optional metadata
     description?: string;
