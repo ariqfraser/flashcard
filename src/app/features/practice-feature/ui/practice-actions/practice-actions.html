@@ -1,1 +1,6 @@
-<p>practice-actions works!</p>
+@if (!hasFlipped()) {
+    <button class="flip" (click)="handleFlip()">flip</button>
+} @else {
+    <button class="wrong" (click)="stateClick('wrong')">wrong?</button>
+    <button class="correct" (click)="stateClick('correct')">correct?</button>
+}

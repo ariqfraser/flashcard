@@ -25,23 +25,23 @@ export const getUserCardMembershipCollection = (userId: string, firestore: Fires
 };
 
 const getCardsInDeckQuery = (
-    deckId: string,
     firestore: Firestore,
+    deckId: string,
     userId: string,
 ): Query<unknown> => {
     const cardsCollection = collection(
         firestore,
         `/users/${userId}/cardMemberships`,
     ) as CollectionReference;
-    return query(cardsCollection, where(`deckIds`, "==", deckId));
+    return query(cardsCollection, where(`deckIds`, "array-contains", deckId));
 };
 
 export const getCardsInDeck$ = (
-    deckId: string,
     firestore: Firestore,
+    deckId: string,
     userId: string,
 ): Observable<DocumentData[]> => {
-    const cardsQuery = collectionData(getCardsInDeckQuery(deckId, firestore, userId));
+    const cardsQuery = collectionData(getCardsInDeckQuery(firestore, deckId, userId));
     return cardsQuery.pipe(
         switchMap((cardMembership: unknown[]) => {
             const cardIds = cardMembership.map((cm: any) => cm.cardId);
