@@ -14,9 +14,19 @@ jest.mock("@angular/fire/auth", () => ({
         }),
 }));
 
-jest.mock("@angular/fire/firestore", () => ({
-    Firestore: Symbol("Firestore"),
-}));
+jest.mock("@angular/fire/firestore", () => {
+    const { of } = require("rxjs");
+    return {
+        Firestore: Symbol("Firestore"),
+        collection: (firestore, path) => ({ __collectionPath: path }),
+        collectionData: (colRef, options) => of([]),
+        query: (...args) => ({ __queryArgs: args }),
+        where: (...args) => ({ __whereArgs: args }),
+        documentId: () => "__id__",
+        CollectionReference: Object,
+        Query: Object,
+    };
+});
 
 // Prevent the Angular rxjs-interop helper from requiring a real Observable in unit tests
 jest.mock("@angular/core/rxjs-interop", () => ({

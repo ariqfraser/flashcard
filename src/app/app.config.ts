@@ -18,6 +18,7 @@ import {
     UserTrackingService,
 } from "@angular/fire/analytics";
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
+import { authInterceptorProvider } from "./core/interceptors/auth.interceptor";
 
 const firebaseProviders: (Provider | EnvironmentProviders)[] = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -40,5 +41,6 @@ export const appConfig: ApplicationConfig = {
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes, withViewTransitions()),
         ...firebaseProviders,
+        authInterceptorProvider,
     ],
 };
