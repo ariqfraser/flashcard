@@ -3,8 +3,6 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PracticeFeature } from "./practice-feature";
 import { RouterModule, ActivatedRoute } from "@angular/router";
 import { Component } from "@angular/core";
-import { RouterTestingModule } from "@angular/router/testing";
-import { of } from "rxjs";
 
 @Component({})
 class DummyComponent {}
@@ -17,11 +15,9 @@ describe("PracticeFeature", () => {
         await TestBed.configureTestingModule({
             imports: [
                 PracticeFeature,
-                // use RouterTestingModule to provide Router and ActivatedRoute infrastructure
-                RouterTestingModule.withRoutes([{ path: "", component: DummyComponent }]),
+                RouterModule.forRoot([{ path: "", component: DummyComponent }]),
             ],
             providers: [
-                // mock ActivatedRoute so the component can read snapshot.queryParams in ngOnInit
                 {
                     provide: ActivatedRoute,
                     useValue: {
