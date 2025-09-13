@@ -1,0 +1,11 @@
+@use "theme" as *;
+@use "constants" as *;
+
+:host {
+    display: block;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    padding: $p2;
+    border-radius: $r;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
