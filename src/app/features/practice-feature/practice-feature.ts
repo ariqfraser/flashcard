@@ -12,6 +12,6 @@ export class PracticeFeature {
     private readonly router = inject(Router);
 
     goBack() {
-        this.router.navigate(["v1", "cards"]);
+        this.router.navigate(["app", "cards"]);
     }
 }
