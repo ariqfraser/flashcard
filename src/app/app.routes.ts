@@ -15,7 +15,7 @@ export const routes: Routes = [
 
     // protected app area
     {
-        path: "v1",
+        path: "app",
         component: Nav,
         children: [
             {
@@ -32,6 +32,15 @@ export const routes: Routes = [
                     ),
                 title: "Practice",
                 data: { showNav: false },
+            },
+            {
+                path: "",
+                loadComponent: () =>
+                    import("./features/dashboard-feature/dashboard-feature").then(
+                        (m) => m.DashboardFeature,
+                    ),
+                title: "Dashboard",
+                data: { showNav: true },
             },
             {
                 path: "dashboard",
