@@ -21,6 +21,7 @@ export class CardListComponent {
         this.selectMode.set(true);
         this.emitSelectedCards();
     }
+
     private emitSelectedCards() {
         this.onMultiSelect.emit(Array.from(this.selectedCards));
     }

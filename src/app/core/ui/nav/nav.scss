@@ -1,0 +1,56 @@
+@use "theme" as *;
+@use "constants" as *;
+
+:host {
+    @include PageStyles();
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: $gap2;
+    gap: $gap1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: $gap2;
+    background-color: var(--color-primary-400);
+    width: max-content;
+    padding: $p1 $p2;
+    border-radius: 10rem;
+
+    &.practice {
+        background-color: var(--color-success);
+    }
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    &.active {
+        app-icon::ng-deep {
+            --icon-color: var(--color-white);
+        }
+    }
+
+    app-icon::ng-deep {
+        --icon-color: var(--color-primary-100);
+    }
+
+    &.cards app-icon {
+        transform: rotate(180deg);
+    }
+}

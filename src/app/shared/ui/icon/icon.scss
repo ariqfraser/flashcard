@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    width: max-content;
+    height: max-content;
+    --icon-color: var(--color-black);
+}
+
+mat-icon {
+    display: block;
+    width: max-content;
+    height: max-content;
+    color: var(--icon-color);
+}
+
+.small {
+    transform: scale(1);
+}
+
+.medium {
+    transform: scale(1.25);
+}
+
+.large {
+    transform: scale(1.5);
+}

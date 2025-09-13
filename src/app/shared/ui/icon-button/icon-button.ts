@@ -9,5 +9,5 @@ import { MatIconModule } from "@angular/material/icon";
 })
 export class IconButton {
     readonly icon = input.required<string>();
-    readonly size = input<"small" | "medium" | "large">("medium");
+    readonly size = input<"small" | "medium" | "large">("small");
 }

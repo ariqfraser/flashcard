@@ -1,6 +1,7 @@
 import { AuthGuard } from "@angular/fire/auth-guard";
 import { Routes } from "@angular/router";
 import { MobileNav } from "@core/ui/mobile-nav/mobile-nav";
+import { Nav } from "@core/ui/nav/nav";
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "auth" },
@@ -11,12 +12,17 @@ export const routes: Routes = [
         loadComponent: () =>
             import("./features/login-feature/login-feature").then((m) => m.LoginFeature),
     },
-
     {
-        path: "cards",
-        loadComponent: () =>
-            import("./features/cards-feature/cards-feature").then((m) => m.CardsFeature),
-        title: "My Flashcards",
+        path: "v1",
+        component: Nav,
+        children: [
+            {
+                path: "cards",
+                loadComponent: () =>
+                    import("./features/cards-feature/cards-feature").then((m) => m.CardsFeature),
+                title: "My Flashcards",
+            },
+        ],
     },
 
     // protected app area — keep the guard on the parent so children are protected
