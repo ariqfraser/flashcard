@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from "@angular/core";
+import { Component, computed, input, output, signal } from "@angular/core";
 import { CardComponent } from "../card/card.component";
 import { Card } from "@shared/types/card.types";
 import { IconButton } from "@shared/ui/icon-button/icon-button";
@@ -13,6 +13,11 @@ export class CardListComponent {
     readonly cards = input.required<Card[]>();
     private readonly selectedCards = new Set<Card>();
     protected readonly selectMode = signal<boolean>(false);
+    protected readonly selectBannerText = computed(() => {
+        return this.selectMode()
+            ? "Multi-select actions: "
+            : "Press and hold on a card to multi-select";
+    });
     readonly onCardTap = output<Card>();
     readonly onMultiSelect = output<Card[]>();
 

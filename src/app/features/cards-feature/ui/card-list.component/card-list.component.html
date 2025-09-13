@@ -1,7 +1,7 @@
 <div class="select-mode-banner">
-    <span class="select-mode-text">{{
-        selectMode() ? "Multi-select actions: " : "Press and hold on a card to multi-select"
-    }}</span>
+    <span class="select-mode-text">
+        {{ selectBannerText() }}
+    </span>
     @if (selectMode()) {
         <button class="icon-button" icon="undo" size="small" (click)="exitSelectMode()"></button>
         <button class="icon-button" icon="delete" size="small"></button>

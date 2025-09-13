@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { CardComponent } from "./card.component";
+import { inputBinding } from "@angular/core";
+import { Card } from "@shared/types/card.types";
 
 describe("Card", () => {
     let component: CardComponent;
@@ -11,7 +13,9 @@ describe("Card", () => {
             imports: [CardComponent],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(CardComponent);
+        fixture = TestBed.createComponent(CardComponent, {
+            bindings: [inputBinding("card", () => ({ id: "1", front: "Q", back: "A" }) as Card)],
+        });
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
