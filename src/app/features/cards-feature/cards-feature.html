@@ -5,7 +5,11 @@
     >My Flashcards</app-page-header
 >
 
+<app-search-box class="search" (searchTermChange)="handleSearchTermChange($event)"></app-search-box>
+
 <app-card-list
     [cards]="flashcards"
     (onCardTap)="handleCardClick($event)"
     (onMultiSelect)="handleMultiSelect($event)"></app-card-list>
+
+<button class="add-card-button">Add flashcard manually</button>

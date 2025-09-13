@@ -4,3 +4,13 @@
 :host {
     @include PageStyles();
 }
+
+.search {
+    margin-bottom: $m1;
+    width: 80%;
+    margin-inline: auto;
+}
+
+.add-card-button {
+    margin-top: $m;
+}

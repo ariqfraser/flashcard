@@ -1,0 +1,7 @@
+<button class="icon-button search" icon="search" size="small"></button>
+
+<input type="text" class="search-input" placeholder="Search..." [(ngModel)]="searchTerm" />
+
+@if (searchTerm()) {
+    <button class="icon-button" icon="close" size="small" (click)="clear()"></button>
+}

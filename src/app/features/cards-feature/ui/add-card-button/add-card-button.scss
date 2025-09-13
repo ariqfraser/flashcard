@@ -1,0 +1,14 @@
+@use "theme" as *;
+@use "constants" as *;
+
+:host {
+    background-color: transparent;
+    cursor: pointer;
+    border: 3px dashed var(--color-primary-100);
+    border-radius: $r;
+    padding: $p1;
+    text-align: center;
+    width: 100%;
+    color: var(--color-primary-100);
+    font-weight: bold;
+}
