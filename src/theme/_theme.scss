@@ -2,6 +2,7 @@
 
 @mixin PrimaryColors {
     --color-primary-500: #292c38;
+    --color-primary-450: #353549;
     --color-primary-400: #4d4a88;
     --color-primary-300: #746eba;
     --color-primary-200: #a88ef7;
@@ -26,7 +27,7 @@
 
     --color-primary: var(--color-primary-200);
     --color-background: var(--color-primary-500);
-    --color-surface: var(--color-primary-400);
+    --color-surface: var(--color-primary-450);
 
     // Text
     --color-text-primary: var(--color-primary-200);

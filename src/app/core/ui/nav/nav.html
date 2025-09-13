@@ -1,21 +1,22 @@
 <router-outlet />
+@if (showNav$ | async) {
+    <nav class="nav-container">
+        <div class="nav-section">
+            <button class="nav-button" routerLink="/v1/dashboard" routerLinkActive="active">
+                <app-icon icon="analytics" size="medium"></app-icon>
+            </button>
+            <button class="nav-button cards" routerLink="/v1/cards" routerLinkActive="active">
+                <app-icon icon="playing_cards" size="medium"></app-icon>
+            </button>
+            <button class="nav-button">
+                <app-icon icon="account_circle" size="medium"></app-icon>
+            </button>
+        </div>
 
-<nav class="nav-container">
-    <div class="nav-section">
-        <button class="nav-button">
-            <app-icon icon="analytics" size="medium"></app-icon>
-        </button>
-        <button class="nav-button cards" routerLink="/v1/cards" routerLinkActive="active">
-            <app-icon icon="playing_cards" size="medium"></app-icon>
-        </button>
-        <button class="nav-button">
-            <app-icon icon="account_circle" size="medium"></app-icon>
-        </button>
-    </div>
-
-    <div class="nav-section practice">
-        <button class="nav-button" routerLink="/v1/practice" routerLinkActive="active">
-            <app-icon icon="exercise" size="medium"></app-icon>
-        </button>
-    </div>
-</nav>
+        <div class="nav-section practice">
+            <button class="nav-button" routerLink="/v1/practice" routerLinkActive="active">
+                <app-icon icon="exercise" size="medium"></app-icon>
+            </button>
+        </div>
+    </nav>
+}

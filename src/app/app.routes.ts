@@ -12,6 +12,8 @@ export const routes: Routes = [
         loadComponent: () =>
             import("./features/login-feature/login-feature").then((m) => m.LoginFeature),
     },
+
+    // protected app area
     {
         path: "v1",
         component: Nav,
@@ -22,67 +24,26 @@ export const routes: Routes = [
                     import("./features/cards-feature/cards-feature").then((m) => m.CardsFeature),
                 title: "My Flashcards",
             },
-        ],
-    },
-
-    // protected app area — keep the guard on the parent so children are protected
-    {
-        path: "app",
-        canActivate: [AuthGuard],
-        component: MobileNav,
-        children: [
-            {
-                path: "",
-                pathMatch: "full",
-                loadComponent: () =>
-                    import("./features/dashboard-feature/dashboard-feature").then(
-                        (m) => m.DashboardFeature,
-                    ),
-            },
-            {
-                path: "decks",
-                children: [
-                    {
-                        path: "",
-                        pathMatch: "full",
-                        loadComponent: () =>
-                            import("./features/decks-feature/decks-feature").then(
-                                (m) => m.DecksFeature,
-                            ),
-                    },
-                    {
-                        path: "new",
-                        data: { showNav: false },
-                        loadComponent: () =>
-                            import("./features/deck-edit-feature/deck-edit-feature").then(
-                                (m) => m.DeckEditFeature,
-                            ),
-                    },
-                    {
-                        path: "edit/:deckId",
-                        data: { showNav: false },
-                        loadComponent: () =>
-                            import("./features/deck-edit-feature/deck-edit-feature").then(
-                                (m) => m.DeckEditFeature,
-                            ),
-                    },
-                ],
-            },
             {
                 path: "practice",
-                data: { showNav: false },
                 loadComponent: () =>
                     import("./features/practice-feature/practice-feature").then(
                         (m) => m.PracticeFeature,
                     ),
+                title: "Practice",
+                data: { showNav: false },
             },
             {
-                path: "demo",
+                path: "dashboard",
                 loadComponent: () =>
-                    import("./features/demo-feature/demo-feature").then((m) => m.DemoFeature),
+                    import("./features/dashboard-feature/dashboard-feature").then(
+                        (m) => m.DashboardFeature,
+                    ),
+                title: "Dashboard",
+                data: { showNav: true },
             },
         ],
     },
 
-    { path: "**", pathMatch: "full", redirectTo: "app" },
+    { path: "**", pathMatch: "full", redirectTo: "auth" },
 ];

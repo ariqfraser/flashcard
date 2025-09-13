@@ -1,5 +1,9 @@
 @if (showBack()) {
-    <button class="icon-button" icon="chevron_left" size="large"></button>
+    <button
+        class="icon-button"
+        icon="chevron_left"
+        size="large"
+        (click)="handleBackClick()"></button>
 }
 <h1 class="page-title"><ng-content></ng-content></h1>
 

@@ -1,6 +1,3 @@
-<h1>{{ deck()?.title }}</h1>
-<app-flashcard [card]="cards()[currentCardIndex()]" [flipped]="flippedState()"></app-flashcard>
-<app-practice-actions
-    (flipClicked)="flipCard()"
-    (wrongClicked)="handleWrong()"
-    (correctClicked)="handleCorrect()"></app-practice-actions>
+<app-page-header title="Practice" [showBack]="true" (onBackClick)="goBack()">
+    My deck title
+</app-page-header>
