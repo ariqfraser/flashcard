@@ -1,0 +1,29 @@
+@use "theme" as *;
+
+:host {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-clickable);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-icon:hover {
+    color: var(--color-primary);
+}
+
+.small {
+    transform: scale(1);
+}
+
+.medium {
+    transform: scale(1.5);
+}
+
+.large {
+    transform: scale(2);
+}

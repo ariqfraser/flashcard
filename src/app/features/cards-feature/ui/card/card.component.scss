@@ -1,0 +1,29 @@
+@use "theme" as *;
+@use "constants" as *;
+
+:host {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: var(--color-primary-400);
+    color: var(--color-text);
+    padding: $p1 $p2;
+    border-radius: $r;
+    gap: $gap;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card-info {
+    margin-right: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .card-front {
+        overflow: inherit;
+        text-overflow: inherit;
+        white-space: inherit;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,19 @@
+@if (showBack()) {
+    <button class="icon-button" icon="chevron_left" size="large"></button>
+}
+<h1 class="page-title"><ng-content></ng-content></h1>
+
+<div class="right">
+    @if (showHelp()) {
+        <button
+            class="icon-button"
+            icon="help_outline"
+            size="small"
+            [matTooltip]="helpContent()"
+            matTooltipPosition="below"></button>
+    }
+</div>
+
+@if (subtitle()) {
+    <p class="page-subtitle">{{ subtitle() }}</p>
+}

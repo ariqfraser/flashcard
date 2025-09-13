@@ -12,6 +12,13 @@ export const routes: Routes = [
             import("./features/login-feature/login-feature").then((m) => m.LoginFeature),
     },
 
+    {
+        path: "cards",
+        loadComponent: () =>
+            import("./features/cards-feature/cards-feature").then((m) => m.CardsFeature),
+        title: "My Flashcards",
+    },
+
     // protected app area — keep the guard on the parent so children are protected
     {
         path: "app",

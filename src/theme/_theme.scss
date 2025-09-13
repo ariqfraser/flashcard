@@ -1,0 +1,46 @@
+@use "constants" as *;
+
+@mixin PrimaryColors {
+    --color-primary-500: #292c38;
+    --color-primary-400: #4d4a88;
+    --color-primary-300: #746eba;
+    --color-primary-200: #a88ef7;
+    --color-primary-100: #e3defc;
+}
+
+@mixin BasicColors {
+    --color-black: #111317;
+    --color-gray: #b8b6bf;
+    --color-white: #ffffff;
+}
+
+@mixin StatusColors {
+    --color-success: #66bccd;
+    --color-error: #e77c6b;
+}
+
+.theme-dark {
+    @include PrimaryColors;
+    @include BasicColors;
+    @include StatusColors;
+
+    --color-primary: var(--color-primary-200);
+    --color-background: var(--color-primary-500);
+    --color-surface: var(--color-primary-400);
+
+    // Text
+    --color-text-primary: var(--color-primary-200);
+    --color-text: var(--color-white);
+    --color-text-contrast: var(--color-black);
+    --color-text-secondary: var(--color-gray);
+    --color-text-disabled: var(--color-gray);
+    --color-text-clickable: var(--color-primary-100);
+}
+
+@mixin PageStyles {
+    display: block;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    width: min(calc(100vw - 4rem), 800px);
+    margin-inline: auto;
+}

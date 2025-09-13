@@ -1,0 +1,16 @@
+@if (selectMode()) {
+    <div class="select-mode-banner">
+        <span class="select-mode-text">Select Mode</span>
+        <button class="text-button">clear</button>
+        <button class="icon-button" icon="delete" size="small"></button>
+        <button class="icon-button" icon="eject" size="small" (click)="exitSelectMode()"></button>
+    </div>
+}
+@for (card of cards(); track card.id) {
+    <app-card
+        class="card"
+        [card]="card"
+        (tap)="handleCardClick(card)"
+        (hold)="handleCardHold($event)"
+        [isInSelectMode]="selectMode()"></app-card>
+}

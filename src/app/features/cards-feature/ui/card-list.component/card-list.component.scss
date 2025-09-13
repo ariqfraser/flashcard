@@ -1,0 +1,7 @@
+@use "constants" as *;
+
+:host {
+    .card:not(:last-child) {
+        margin-bottom: $m;
+    }
+}
