@@ -25,6 +25,10 @@ export class CardListComponent {
         this.onMultiSelect.emit(Array.from(this.selectedCards));
     }
 
+    protected isCardSelected(card: Card): boolean {
+        return this.selectedCards.has(card);
+    }
+
     exitSelectMode() {
         this.selectMode.set(false);
         this.selectedCards.clear();

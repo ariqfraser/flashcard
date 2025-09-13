@@ -2,6 +2,8 @@ import { Component, input, output } from "@angular/core";
 import { Card } from "@shared/types/card.types";
 import { IconButton } from "@shared/ui/icon-button/icon-button";
 
+const HOLD_DURATION_MS = 500;
+
 @Component({
     selector: "app-card",
     imports: [IconButton],
@@ -10,8 +12,7 @@ import { IconButton } from "@shared/ui/icon-button/icon-button";
     host: {
         "(pointerdown)": "onPointerDown()",
         "(pointerup)": "onPointerUp()",
-        "(pointerleave)": "onPointerUp()",
-        "(click)": "onClick($event)",
+        "(pointerleave)": "clearTimeout()",
     },
 })
 export class CardComponent {
@@ -21,22 +22,29 @@ export class CardComponent {
     readonly tap = output<Card>();
 
     #holdTimeout: ReturnType<typeof setTimeout> | null = null;
+    #disableNextClick = false;
 
     onPointerDown() {
         if (this.isInSelectMode()) return;
         this.#holdTimeout = setTimeout(() => {
             this.hold.emit(this.card());
-        }, 2000);
+            this.#disableNextClick = true;
+        }, HOLD_DURATION_MS);
     }
 
     onPointerUp() {
+        this.clearTimeout();
+        if (this.#disableNextClick) {
+            this.#disableNextClick = false;
+            return;
+        }
+        this.tap.emit(this.card());
+    }
+
+    protected clearTimeout() {
         if (this.#holdTimeout) {
             clearTimeout(this.#holdTimeout);
             this.#holdTimeout = null;
         }
-    }
-
-    onClick(event: MouseEvent) {
-        this.tap.emit(this.card());
     }
 }

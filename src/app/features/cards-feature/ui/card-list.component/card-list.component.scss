@@ -5,3 +5,25 @@
         margin-bottom: $m;
     }
 }
+
+.select-mode-banner {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    user-select: none;
+    margin-bottom: $m1;
+}
+
+app-card {
+    transition: transform 0.1s ease-in-out;
+    will-change: transform;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &.selectable:not(.selected) {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}

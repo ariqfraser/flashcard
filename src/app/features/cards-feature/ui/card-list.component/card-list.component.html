@@ -1,14 +1,15 @@
 @if (selectMode()) {
     <div class="select-mode-banner">
-        <span class="select-mode-text">Select Mode</span>
-        <button class="text-button">clear</button>
+        <span class="select-mode-text">Multi Select Mode: </span>
+        <button class="icon-button" icon="undo" size="small" (click)="exitSelectMode()"></button>
         <button class="icon-button" icon="delete" size="small"></button>
-        <button class="icon-button" icon="eject" size="small" (click)="exitSelectMode()"></button>
     </div>
 }
 @for (card of cards(); track card.id) {
     <app-card
         class="card"
+        [class.selected]="isCardSelected(card)"
+        [class.selectable]="selectMode()"
         [card]="card"
         (tap)="handleCardClick(card)"
         (hold)="handleCardHold($event)"
