@@ -1,6 +1,5 @@
 import { AuthGuard } from "@angular/fire/auth-guard";
 import { Routes } from "@angular/router";
-import { MobileNav } from "@core/ui/mobile-nav/mobile-nav";
 import { Nav } from "@core/ui/nav/nav";
 
 export const routes: Routes = [
@@ -54,5 +53,5 @@ export const routes: Routes = [
         ],
     },
 
-    { path: "**", pathMatch: "full", redirectTo: "auth" },
+    { path: "**", pathMatch: "full", redirectTo: "app" },
 ];
