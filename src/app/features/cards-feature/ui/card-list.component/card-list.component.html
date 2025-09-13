@@ -1,10 +1,13 @@
-@if (selectMode()) {
-    <div class="select-mode-banner">
-        <span class="select-mode-text">Multi Select Mode: </span>
+<div class="select-mode-banner">
+    <span class="select-mode-text">{{
+        selectMode() ? "Multi-select actions: " : "Press and hold on a card to multi-select"
+    }}</span>
+    @if (selectMode()) {
         <button class="icon-button" icon="undo" size="small" (click)="exitSelectMode()"></button>
         <button class="icon-button" icon="delete" size="small"></button>
-    </div>
-}
+    }
+</div>
+
 @for (card of cards(); track card.id) {
     <app-card
         class="card"
