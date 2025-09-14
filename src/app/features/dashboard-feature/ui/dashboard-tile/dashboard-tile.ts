@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, input } from "@angular/core";
 
 @Component({
     selector: "div.dashboard-tile",
@@ -6,4 +6,6 @@ import { Component } from "@angular/core";
     templateUrl: "./dashboard-tile.html",
     styleUrl: "./dashboard-tile.scss",
 })
-export class DashboardTile {}
+export class DashboardTile {
+    readonly title = input<string | undefined>();
+}

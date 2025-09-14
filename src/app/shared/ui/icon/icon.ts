@@ -5,7 +5,7 @@ import { MatIconModule } from "@angular/material/icon";
     selector: "app-icon",
     imports: [MatIconModule],
     templateUrl: "./icon.html",
-    styleUrl: "./icon.scss",
+    styleUrls: ["./icon.scss"],
 })
 export class Icon {
     icon = input.required<string>();

@@ -1,0 +1,25 @@
+<div class="card" #CardRef>
+    @if (showFront()) {
+        <p class="front-text">{{ front() }}</p>
+    } @else {
+        <p class="back-front-text">{{ front() }}</p>
+        <p class="back-text">{{ back() }}</p>
+
+        @if (showNotes()) {
+            <div class="notes-section">
+                <app-icon class="icon" icon="sticky_note_2"></app-icon>
+                <p [safeInnerHtml]="notes() || ''"></p>
+            </div>
+        } @else {
+            @if (notes()) {
+                <button class="notes-button" (click)="toggleNotes()">
+                    <span>show notes</span>
+                    <app-icon class="icon" icon="visibility"></app-icon>
+                </button>
+            }
+        }
+    }
+</div>
+<div class="background-card">{{ deckName() }}</div>
+<div class="background-card">{{ deckName() }}</div>
+<div class="background-card">{{ deckName() }}</div>

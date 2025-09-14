@@ -9,7 +9,10 @@
         "firebase",
         "firebasestorage",
         "firebaseapp",
-        "RDVITQ"
+        "RDVITQ",
+        "sanitisation",
+        "Registerables",
+        "bento"
     ],
     "ignorePaths": ["node_modules/**", "dist/**", ".git/**"]
 }

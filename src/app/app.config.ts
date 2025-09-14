@@ -19,11 +19,13 @@ import {
 } from "@angular/fire/analytics";
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { authInterceptorProvider } from "./core/interceptors/auth.interceptor";
+import { provideCharts, withDefaultRegisterables } from "ng2-charts";
 
 const firebaseProviders: (Provider | EnvironmentProviders)[] = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
-        if (!environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
+        if (!environment.production)
+            connectAuthEmulator(getAuth(), "http://localhost:9099", { disableWarnings: true });
         return getAuth();
     }),
     provideAnalytics(() => getAnalytics()),
@@ -42,5 +44,6 @@ export const appConfig: ApplicationConfig = {
         provideRouter(routes, withViewTransitions()),
         ...firebaseProviders,
         authInterceptorProvider,
+        provideCharts(withDefaultRegisterables()),
     ],
 };

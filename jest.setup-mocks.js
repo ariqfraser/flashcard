@@ -45,3 +45,23 @@ jest.mock("@angular/core/rxjs-interop", () => ({
         return () => value;
     },
 }));
+
+// ng2-charts ships ESM that imports `lodash-es` and fails in Jest's default transform
+// environment. Mock it early so tests can import components that list BaseChartDirective
+// in their `imports` without pulling the real package.
+jest.mock("ng2-charts", () => {
+    // Create a lightweight Angular directive so TestBed treats it as a valid standalone directive
+    try {
+        const ngCore = require("@angular/core");
+        const BaseChartDirective = ngCore.Directive({
+            standalone: true,
+            selector: "[baseChart]",
+            // declare inputs used in templates so TestBed accepts property bindings
+            inputs: ["data", "options", "plugins", "legend", "type"],
+        })(class BaseChartDirective {});
+        return { BaseChartDirective };
+    } catch (e) {
+        // Fallback: return a simple class if @angular/core isn't available in this context
+        return { BaseChartDirective: class BaseChartDirective {} };
+    }
+});

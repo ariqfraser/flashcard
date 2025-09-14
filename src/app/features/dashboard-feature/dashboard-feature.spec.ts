@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 
 import { DashboardFeature } from "./dashboard-feature";
 
@@ -9,6 +10,7 @@ describe("DashboardFeature", () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DashboardFeature],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DashboardFeature);

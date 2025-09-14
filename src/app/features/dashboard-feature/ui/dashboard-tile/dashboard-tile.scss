@@ -9,3 +9,12 @@
     border-radius: $r;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.title {
+    color: var(--color-white);
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-size: 0.85rem;
+    margin-bottom: $m;
+}
