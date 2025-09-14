@@ -9,7 +9,8 @@ import { SafeInnerHtml } from "@shared/directives/safe-inner-html";
     styleUrls: ["./training-card.scss"],
 })
 export class TrainingCard {
-    readonly text = input.required<string>();
+    readonly front = input.required<string>();
+    readonly back = input.required<string>();
     readonly showFront = model(true);
     readonly notes = input<string>("");
     protected readonly showNotes = signal(false);

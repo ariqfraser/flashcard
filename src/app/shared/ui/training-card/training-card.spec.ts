@@ -13,7 +13,7 @@ describe("TrainingCard", () => {
         }).compileComponents();
 
         fixture = TestBed.createComponent(TrainingCard, {
-            bindings: [inputBinding("text", () => "hello")],
+            bindings: [inputBinding("front", () => "hello"), inputBinding("back", () => "world")],
         });
         component = fixture.componentInstance;
         fixture.detectChanges();

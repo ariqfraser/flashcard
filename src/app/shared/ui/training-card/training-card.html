@@ -1,9 +1,9 @@
 <div class="card">
     @if (showFront()) {
-        <p class="front-text">{{ text() }}</p>
+        <p class="front-text">{{ front() }}</p>
     } @else {
-        <p class="back-front-text">{{ text() }}</p>
-        <p class="back-text">where?</p>
+        <p class="back-front-text">{{ front() }}</p>
+        <p class="back-text">{{ back() }}</p>
 
         @if (showNotes()) {
             <div class="notes-section">
