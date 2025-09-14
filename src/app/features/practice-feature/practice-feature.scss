@@ -1,4 +1,67 @@
+@use "theme" as *;
+@use "constants" as *;
+
 :host {
     display: block;
     height: 100vh;
+}
+
+.actions {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    gap: $gap2;
+    bottom: calc(#{$m2} * 2);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.action {
+    padding: $p;
+    min-width: #{$m2 * 2};
+    min-height: #{$m2 * 2};
+    border: none;
+    border-radius: 10rem;
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+    transition: background-color 200ms;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.06);
+
+    app-icon {
+        --icon-color: var(--color-white);
+    }
+
+    &.success {
+        background-color: var(--color-success);
+        &:hover {
+            background-color: color-mix(in srgb, var(--color-success) 80%, black);
+        }
+    }
+
+    &.primary {
+        background-color: var(--color-primary);
+        &:hover {
+            background-color: color-mix(in srgb, var(--color-primary) 80%, black);
+        }
+    }
+
+    &.error {
+        background-color: var(--color-error);
+        &:hover {
+            background-color: color-mix(in srgb, var(--color-error) 80%, black);
+        }
+    }
+
+    &.flip {
+        padding: $p1 $p2;
+        font-size: 1.25rem;
+    }
 }
