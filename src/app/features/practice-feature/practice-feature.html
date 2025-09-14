@@ -5,15 +5,17 @@
 <app-training-card front="Dove?" back="where?" [(showFront)]="showFront"></app-training-card>
 
 <div class="actions">
-    <button class="action error" (click)="flipCard()">
-        <app-icon icon="close" size="medium"></app-icon>
-    </button>
+    @if (!hasFlipped()) {
+        <button class="action primary flip" (click)="flipCard()">
+            <span>flip</span> <app-icon icon="flip"></app-icon>
+        </button>
+    } @else {
+        <button class="action error" (click)="flipCard()">
+            <app-icon icon="close" size="medium"></app-icon>
+        </button>
 
-    <button class="action primary flip" (click)="flipCard()">
-        <span>flip</span> <app-icon icon="flip"></app-icon>
-    </button>
-
-    <button class="action success" (click)="flipCard()">
-        <app-icon icon="check" size="medium"></app-icon>
-    </button>
+        <button class="action success" (click)="flipCard()">
+            <app-icon icon="check" size="medium"></app-icon>
+        </button>
+    }
 </div>

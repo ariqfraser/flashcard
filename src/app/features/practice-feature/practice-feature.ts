@@ -13,6 +13,7 @@ import { TrainingCard } from "@shared/ui/training-card/training-card";
 export class PracticeFeature {
     private readonly router = inject(Router);
     protected showFront = signal(true);
+    protected hasFlipped = signal(false);
 
     goBack() {
         this.router.navigate(["app", "cards"]);
@@ -20,5 +21,6 @@ export class PracticeFeature {
 
     flipCard() {
         this.showFront.update((value) => !value);
+        this.hasFlipped.update(() => true);
     }
 }
