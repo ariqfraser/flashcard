@@ -7,7 +7,7 @@ import { BaseChartDirective } from "ng2-charts";
     selector: "div.chart",
     imports: [BaseChartDirective],
     templateUrl: "./chart.html",
-    styleUrl: "./chart.scss",
+    styleUrls: ["./chart.scss"],
 })
 export class Chart {
     readonly config = input.required<ChartConfig<ChartType>>();
