@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TrainingCard } from "./training-card";
+import { inputBinding } from "@angular/core";
 
 describe("TrainingCard", () => {
     let component: TrainingCard;
@@ -11,7 +12,9 @@ describe("TrainingCard", () => {
             imports: [TrainingCard],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(TrainingCard);
+        fixture = TestBed.createComponent(TrainingCard, {
+            bindings: [inputBinding("text", () => "hello")],
+        });
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
