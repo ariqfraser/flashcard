@@ -4,7 +4,7 @@
 @mixin CardSize() {
     $width: min(100%, 20rem);
     width: $width;
-    height: calc(#{$width} * 1.61);
+    aspect-ratio: 1 / 1.61;
     margin-inline: auto;
 }
 
@@ -18,7 +18,13 @@
     gap: $gap1;
 }
 
+$box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+
 :host {
+    position: relative;
+    display: block;
     @include CardSize();
     color: var(--color-black);
 }
@@ -27,6 +33,9 @@
     background-color: var(--color-white);
     @include CardSize();
     @include CardStyle();
+    position: relative;
+    z-index: 5;
+    box-shadow: $box-shadow;
 }
 
 .front-text {
@@ -77,5 +86,28 @@
     font-weight: bold;
     app-icon {
         --icon-color: var(--color-success);
+    }
+}
+
+.background-card {
+    @include CardSize();
+    @include CardStyle();
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    box-shadow: $box-shadow;
+
+    @for $i from 1 through 3 {
+        $angle: random(20) - 10;
+        &:nth-of-type(#{$i}) {
+            background-color: var(--color-primary-#{5 - $i}00);
+            transform: translate(-50%, -50%) rotate(#{$angle}deg);
+            z-index: #{$i};
+        }
     }
 }

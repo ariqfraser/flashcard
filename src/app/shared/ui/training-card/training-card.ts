@@ -11,6 +11,7 @@ import { SafeInnerHtml } from "@shared/directives/safe-inner-html";
 export class TrainingCard {
     readonly front = input.required<string>();
     readonly back = input.required<string>();
+    readonly deckName = input<string>("Default Deck");
     readonly showFront = model(true);
     readonly notes = input<string>("");
     protected readonly showNotes = signal(false);
