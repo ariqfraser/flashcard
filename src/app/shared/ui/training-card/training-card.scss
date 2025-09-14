@@ -1,0 +1,81 @@
+@use "theme" as *;
+@use "constants" as *;
+
+@mixin CardSize() {
+    $width: min(100%, 20rem);
+    width: $width;
+    height: calc(#{$width} * 1.61);
+    margin-inline: auto;
+}
+
+@mixin CardStyle() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: $r;
+    padding: $p2;
+    gap: $gap1;
+}
+
+:host {
+    @include CardSize();
+    color: var(--color-black);
+}
+
+.card {
+    background-color: var(--color-white);
+    @include CardSize();
+    @include CardStyle();
+}
+
+.front-text {
+    $s: 2rem;
+    font-size: $s;
+    line-height: $s;
+    font-weight: bold;
+}
+
+.back-front-text {
+    $s: 1.5rem;
+    font-size: $s;
+    line-height: $s;
+    font-weight: bold;
+}
+
+.back-text {
+    $s: 1.25rem;
+    font-size: $s;
+    line-height: $s;
+}
+
+.notes-section {
+    position: relative;
+
+    width: 100%;
+    border: 2px solid var(--color-text-secondary);
+    padding: $p1 calc($p1 * 2) $p1 calc($p2 * 2);
+    border-radius: $r;
+
+    .icon {
+        position: absolute;
+        top: $p;
+        left: $p;
+
+        --icon-color: var(--color-text-secondary);
+    }
+}
+
+.notes-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    color: var(--color-success);
+    font-weight: bold;
+    app-icon {
+        --icon-color: var(--color-success);
+    }
+}

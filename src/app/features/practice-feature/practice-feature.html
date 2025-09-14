@@ -1,3 +1,7 @@
 <app-page-header title="Practice" [showBack]="true" (onBackClick)="goBack()">
     My deck title
 </app-page-header>
+
+<app-training-card text="Dove?" [(showFront)]="showFront"></app-training-card>
+
+<button (click)="flipCard()">flip</button>

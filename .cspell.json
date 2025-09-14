@@ -9,7 +9,8 @@
         "firebase",
         "firebasestorage",
         "firebaseapp",
-        "RDVITQ"
+        "RDVITQ",
+        "sanitisation"
     ],
     "ignorePaths": ["node_modules/**", "dist/**", ".git/**"]
 }

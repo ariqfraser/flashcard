@@ -23,7 +23,8 @@ import { authInterceptorProvider } from "./core/interceptors/auth.interceptor";
 const firebaseProviders: (Provider | EnvironmentProviders)[] = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
-        if (!environment.production) connectAuthEmulator(getAuth(), "http://localhost:9099");
+        if (!environment.production)
+            connectAuthEmulator(getAuth(), "http://localhost:9099", { disableWarnings: true });
         return getAuth();
     }),
     provideAnalytics(() => getAnalytics()),
